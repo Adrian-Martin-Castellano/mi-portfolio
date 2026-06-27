@@ -46,3 +46,15 @@
 .navLinks a:hover {
   color: #646cff;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1.5rem;
+  }
+  .navLinks {
+    gap: 1rem;
+  }
+  .navLinks a {
+    font-size: 0.9rem;
+  }
+}
