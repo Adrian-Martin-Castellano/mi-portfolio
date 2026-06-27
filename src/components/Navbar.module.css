@@ -1,0 +1,48 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(18, 18, 18, 0.85); /* Fondo oscuro con transparencia */
+  backdrop-filter: blur(10px); /* Efecto difuminado*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #2a2a2a;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: sans-serif;
+}
+
+.dot {
+  color: #646cff;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks a {
+  color: #cccccc;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #646cff; /* Color cuando se pasa el ratón sobre el texto */
+}
