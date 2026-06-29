@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
 function Navbar() {
@@ -8,16 +9,35 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  const linkStyle = ({ isActive }: { isActive: boolean }) => ({
+    color: isActive ? '#646cff' : '#aaaaaa',
+    fontWeight: isActive ? '600' : '500',
+  });
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-        Adrián<span>.dev</span>
+        <Link to="/">
+          Adrián<span>.dev</span>
+        </Link>
       </div>
+      
       <div className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
-        <a href="#inicio" onClick={() => setIsOpen(false)}>Inicio</a>
-        <a href="#sobre-mi" onClick={() => setIsOpen(false)}>Sobre Mí</a>
-        <a href="#proyectos" onClick={() => setIsOpen(false)}>Proyectos</a>
-        <a href="#contacto" onClick={() => setIsOpen(false)}>Contacto</a>
+        <NavLink to="/" style={linkStyle} onClick={() => setIsOpen(false)}>
+          Inicio
+        </NavLink>
+        
+        <NavLink to="/sobre-mi" style={linkStyle} onClick={() => setIsOpen(false)}>
+          Sobre Mí
+        </NavLink>
+        
+        <NavLink to="/proyectos" style={linkStyle} onClick={() => setIsOpen(false)}>
+          Proyectos
+        </NavLink>
+        
+        <NavLink to="/contacto" style={linkStyle} onClick={() => setIsOpen(false)}>
+          Contacto
+        </NavLink>
       </div>
 
       <button className={styles.menuIcon} onClick={toggleMenu} aria-label="Toggle menu">

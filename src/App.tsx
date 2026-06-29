@@ -1,24 +1,30 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
+import Home from './pages/home';
+import AboutPage from './pages/AboutPage';
+import ProjectsPage from './pages/ProjectsPage';
+import ContactPage from './pages/ContactPage';
+
 import styles from './App.module.css';
-import backgroundImage from './assets/hero-bg.jpg'; 
 
 function App() {
   return (
-    <div className={styles.pageContainer}>
-      <Navbar />
-      <main 
-        className={styles.heroSection} 
-        style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${backgroundImage})` }}>
-        <div className={styles.heroCard}>
-          <h1>¡Hola! Soy Adrián Martín Castellano</h1>
-          <p className={styles.subtitle}>
-            Desarrollador Web <span>|</span> Portfolio en construcción
-          </p>
+    <Router>
+      <div className={styles.pageContainer}>
+        <Navbar />
+        <div className={styles.mainContent}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sobre-mi" element={<AboutPage />} />
+            <Route path="/proyectos" element={<ProjectsPage />} />
+            <Route path="/contacto" element={<ContactPage />} />
+          </Routes>
         </div>
-      </main>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
