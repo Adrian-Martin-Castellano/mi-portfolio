@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaArrowDown, FaCode, FaJs, FaPython, FaJava, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaTerminal } from 'react-icons/fa'; 
+import { FaArrowDown, FaCode, FaJs, FaPython, FaJava, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaTerminal, FaExternalLinkAlt } from 'react-icons/fa'; 
 import { SiTypescript, SiPostgresql, SiNodedotjs } from 'react-icons/si'; 
 import { DiVisualstudio } from 'react-icons/di'; 
 import styles from './Home.module.css';
@@ -24,6 +24,13 @@ function Home({ language }: HomeProps) {
       frameworksDesc: 'Herramientas y entornos modernos que utilizo para acelerar el desarrollo y crear interfaces interactivas.',
       toolsTitle: 'Herramientas & Entornos',
       toolsDesc: 'El software y utilidades esenciales que optimizan mi flujo de trabajo diario y control de versiones.',
+      projectsMainTitle: 'Proyectos Destacados',
+      viewCode: 'Código',
+      liveDemo: 'Demo',
+      project1Title: 'E-Commerce Platform',
+      project1Desc: 'Aplicación web completa con carrito de compras, pasarela de pago integrada y panel de administración interactivo.',
+      project2Title: 'Task Manager Dashboard',
+      project2Desc: 'Gestor de tareas en tiempo real con arrastrar y soltar, analíticas de productividad y sistema de autenticación seguro.',
       welcome: 'Bienvenido a mi espacio digital',
       description: 'Soy estudiante universitario apasionado por la tecnología y el desarrollo de aplicaciones web. En este portfolio podrás conocer más detalladamente mi trayectoria académica, las tecnologías con las que trabajo a diario y los proyectos que he desarrollado.',
       moreAboutMe: '→ Saber más sobre mí',
@@ -43,6 +50,13 @@ function Home({ language }: HomeProps) {
       frameworksDesc: 'Modern tools and environments I leverage to speed up development and build interactive UIs.',
       toolsTitle: 'Tools & Environments',
       toolsDesc: 'Essential software and utilities that optimize my daily workflow and version control.',
+      projectsMainTitle: 'Featured Projects',
+      viewCode: 'Code',
+      liveDemo: 'Demo',
+      project1Title: 'E-Commerce Platform',
+      project1Desc: 'Full web application with a shopping cart, integrated payment gateway, and an interactive admin dashboard.',
+      project2Title: 'Task Manager Dashboard',
+      project2Desc: 'Real-time task manager with drag-and-drop functionality, productivity analytics, and secure authentication.',
       welcome: 'Welcome to my digital space',
       description: 'I am a university student passionate about technology and web application development. In this portfolio, you can learn more in detail about my academic background, the technologies I work with daily, and the projects I have built.',
       moreAboutMe: '→ More about me',
@@ -114,11 +128,9 @@ function Home({ language }: HomeProps) {
       </div>
 
       <section id="tech-section" className={styles.techSection}>
-        
         <h2 className={styles.mainTechTitle}>{t.techMainTitle}</h2>
 
         <div className={styles.techCardsContainer}>
-
           <div className={styles.techCardSection}>
             <h2>{t.languagesTitle}</h2>
             <p className={styles.techCardDesc}>{t.languagesDesc}</p>
@@ -191,13 +203,61 @@ function Home({ language }: HomeProps) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <div className={styles.sectionDivider}>
+        <div className={styles.dividerLine}></div>
+        <div className={styles.dividerBadge}>📁 PROJECTS</div>
+        <div className={styles.dividerLine}></div>
+      </div>
+
+      <section className={styles.projectsSection}>
+        <h2 className={styles.mainProjectsTitle}>{t.projectsMainTitle}</h2>
+        <div className={styles.projectsGridContainer}>
+          
+          <div className={styles.projectCard}>
+            <h3>{t.project1Title}</h3>
+            <p>{t.project1Desc}</p>
+            <div className={styles.projectTags}>
+              <span>React</span>
+              <span>Node.js</span>
+              <span>PostgreSQL</span>
+            </div>
+            <div className={styles.projectLinks}>
+              <a href="https://github.com" target="_blank" rel="noreferrer" className={styles.projLinkSecondary}>
+                <FaGithub /> {t.viewCode}
+              </a>
+              <a href="https://demo.com" target="_blank" rel="noreferrer" className={styles.projLinkPrimary}>
+                <FaExternalLinkAlt /> {t.liveDemo}
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.projectCard}>
+            <h3>{t.project2Title}</h3>
+            <p>{t.project2Desc}</p>
+            <div className={styles.projectTags}>
+              <span>TypeScript</span>
+              <span>React</span>
+              <span>CSS Modules</span>
+            </div>
+            <div className={styles.projectLinks}>
+              <a href="https://github.com" target="_blank" rel="noreferrer" className={styles.projLinkSecondary}>
+                <FaGithub /> {t.viewCode}
+              </a>
+              <a href="https://demo.com" target="_blank" rel="noreferrer" className={styles.projLinkPrimary}>
+                <FaExternalLinkAlt /> {t.liveDemo}
+              </a>
+            </div>
+          </div>
 
         </div>
       </section>
 
       <div className={styles.sectionDivider}>
         <div className={styles.dividerLine}></div>
-        <div className={styles.dividerBadge}>⚡ STACK</div>
+        <div className={styles.dividerBadge}>✨ BIO</div>
         <div className={styles.dividerLine}></div>
       </div>
 
