@@ -7,6 +7,7 @@ interface FooterProps {
 
 function Footer({ language }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const locationText = language === 'es' ? 'Islas Canarias, España' : 'Canary Islands, Spain';
 
   return (
     <footer className={styles.footer}>
@@ -18,7 +19,7 @@ function Footer({ language }: FooterProps) {
 
         <div className={styles.location}>
           <FaMapMarkerAlt className={styles.pinIcon} />
-          <span>Islas Canarias, España</span>
+          <span>{locationText}</span>
         </div>
         
         <div className={styles.socials}>
