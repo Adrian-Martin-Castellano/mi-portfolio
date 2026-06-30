@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #0d0d0d;
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
 
 .heroSection {
@@ -18,19 +19,21 @@
 }
 
 .heroCard {
-  background-color: rgba(17, 17, 17, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(15, 15, 17, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
   padding: 3.5rem 5rem;
   border-radius: 16px;
   text-align: center;
   max-width: 850px;
   width: 100%;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .heroCard h1 {
-  color: #ffffff;
-  font-family: sans-serif;
+  color: #ffffff; 
+  font-family: var(--font-main), sans-serif;
   font-size: 2.8rem;
   margin: 0 0 0.5rem 0;
   font-weight: 700;
@@ -38,38 +41,41 @@
 }
 
 .subtitle {
-  color: #aaaaaa;
-  font-family: sans-serif;
+  color: #f59e0b; 
+  font-family: var(--font-code), monospace; 
   font-size: 1.4rem;
   margin: 0 0 2.5rem 0;
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .ctaButton {
   display: inline-block;
-  background-color: #646cff;
-  color: #ffffff;
-  font-family: sans-serif;
-  font-weight: 600;
-  padding: 0.8rem 2rem;
+  background-color: var(--accent); 
+  color: #0f0f11; 
+  font-family: var(--font-main), sans-serif;
+  font-weight: 700;
+  padding: 0.8rem 2.2rem;
   border-radius: 8px;
   text-decoration: none;
   font-size: 1.1rem;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, filter 0.2s ease;
 }
 
 .ctaButton:hover {
-  background-color: #535bf2;
+  filter: brightness(1.1); 
   transform: translateY(-2px);
 }
 
 .summarySection {
-  background-color: #121212; 
+  background-color: var(--bg-primary); 
   padding: 100px 2rem;
-  color: #ffffff;
-  font-family: sans-serif;
+  color: var(--text-primary);
+  font-family: var(--font-main), sans-serif;
   display: flex;
   justify-content: center;
+  border-top: 1px solid var(--border);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .summaryContent {
@@ -80,11 +86,11 @@
 .summaryContent h2 {
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .summaryContent p {
-  color: #aaaaaa;
+  color: var(--text-secondary);
   font-size: 1.2rem;
   line-height: 1.8;
   margin-bottom: 2.5rem;
@@ -97,15 +103,16 @@
 }
 
 .secondaryLink {
-  color: #646cff;
+  color: var(--accent); 
   text-decoration: none;
   font-size: 1.1rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  font-weight: 600;
+  font-family: var(--font-main), sans-serif;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .secondaryLink:hover {
-  color: #858bff;
+  opacity: 0.8;
   text-decoration: underline;
 }
 
@@ -120,7 +127,7 @@
   }
 
   .subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .summarySection {
