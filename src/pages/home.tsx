@@ -34,7 +34,7 @@ function Home({ language }: HomeProps) {
     <div className={styles.homeContainer}>
       <section 
         className={styles.heroSection} 
-        style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${backgroundImage})` }}>
+        style={{ backgroundImage: `linear-gradient(var(--hero-overlay), var(--hero-overlay)), url(${backgroundImage})` }}>
         <div className={styles.heroCard}>
           <h1>{t.greeting}</h1>
           <p className={styles.subtitle}>{t.role}</p>
