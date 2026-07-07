@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { FaArrowDown, FaCode, FaJs, FaPython, FaJava, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaTerminal, FaExternalLinkAlt } from 'react-icons/fa'; 
-import { SiTypescript, SiPostgresql, SiNodedotjs } from 'react-icons/si'; 
+import { FaArrowDown, FaCode, FaJs, FaPython, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaTerminal, FaExternalLinkAlt, FaGem, FaBootstrap, FaBrain } from 'react-icons/fa';
+import { SiTypescript, SiPostgresql, SiNodedotjs, SiCplusplus, SiExpress, SiMongodb, SiVercel, SiPostman } from 'react-icons/si';
 import { DiVisualstudio } from 'react-icons/di'; 
 import styles from './Home.module.css';
 import backgroundImage from '../assets/hero-bg.jpg'; 
@@ -18,12 +18,12 @@ function Home({ language }: HomeProps) {
       ctaProjects: 'Ver mis proyectos',
       ctaStack: 'Mi Stack',
       techMainTitle: 'Mi Stack Tecnológico',
-      languagesTitle: 'Lenguajes de Programación',
+      languagesTitle: 'Lenguajes de Programación & Base de datos',
       languagesDesc: 'Los pilares fundamentales con los que estructuro la lógica y el comportamiento de mis aplicaciones.',
       frameworksTitle: 'Frameworks & Librerías',
       frameworksDesc: 'Herramientas y entornos modernos que utilizo para acelerar el desarrollo y crear interfaces interactivas.',
       toolsTitle: 'Herramientas & Entornos',
-      toolsDesc: 'El software y utilidades esenciales que optimizan mi flujo de trabajo diario y control de versiones.',
+      toolsDesc: 'El software, utilidades y plataformas esenciales que optimizan mi flujo de trabajo diario, control de versiones y despliegue.',
       projectsMainTitle: 'Proyectos Destacados',
       viewCode: 'Código',
       liveDemo: 'Demo',
@@ -44,12 +44,12 @@ function Home({ language }: HomeProps) {
       ctaProjects: 'View my projects',
       ctaStack: 'My Stack',
       techMainTitle: 'My Tech Stack',
-      languagesTitle: 'Programming Languages',
+      languagesTitle: 'Programming Languages & DataBases',
       languagesDesc: 'The core foundations I use to structure the logic and behavior of my applications.',
       frameworksTitle: 'Frameworks & Libraries',
       frameworksDesc: 'Modern tools and environments I leverage to speed up development and build interactive UIs.',
       toolsTitle: 'Tools & Environments',
-      toolsDesc: 'Essential software and utilities that optimize my daily workflow and version control.',
+      toolsDesc: 'Essential software, utilities, and platforms that optimize my daily workflow, version control, and deployment.',
       projectsMainTitle: 'Featured Projects',
       viewCode: 'Code',
       liveDemo: 'Demo',
@@ -131,6 +131,7 @@ function Home({ language }: HomeProps) {
         <h2 className={styles.mainTechTitle}>{t.techMainTitle}</h2>
 
         <div className={styles.techCardsContainer}>
+          {/* Section 1: Languajes & databases */}
           <div className={styles.techCardSection}>
             <h2>{t.languagesTitle}</h2>
             <p className={styles.techCardDesc}>{t.languagesDesc}</p>
@@ -148,16 +149,33 @@ function Home({ language }: HomeProps) {
                 <span>Python</span>
               </div>
               <div className={styles.techItemCard}>
-                <FaJava className={styles.techIcon} style={{ color: '#007396' }} />
-                <span>Java</span>
+                <SiCplusplus className={styles.techIcon} style={{ color: '#00599c' }} />
+                <span>C++</span>
+              </div>
+              <div className={styles.techItemCard}>
+                <FaGem className={styles.techIcon} style={{ color: '#cc342d' }} />
+                <span>Ruby</span>
+              </div>
+              <div className={styles.techItemCard}>
+                <FaTerminal className={styles.techIcon} style={{ color: '#6e4a7e' }} />
+                <span>Assembly</span>
               </div>
               <div className={styles.techItemCard}>
                 <SiPostgresql className={styles.techIcon} style={{ color: '#4169e1' }} />
-                <span>SQL</span>
+                <span>PostgreSQL</span>
+              </div>
+              <div className={styles.techItemCard}>
+                <SiMongodb className={styles.techIcon} style={{ color: '#47a248' }} />
+                <span>MongoDB / Atlas</span>
+              </div>
+              <div className={styles.techItemCard}>
+              <FaBrain className={styles.techIcon} style={{ color: '#e32929' }} />
+                <span>Prolog</span>
               </div>
             </div>
           </div>
 
+          {/* Section 2: Frameworks & libraries */}
           <div className={styles.techCardSection}>
             <h2>{t.frameworksTitle}</h2>
             <p className={styles.techCardDesc}>{t.frameworksDesc}</p>
@@ -171,6 +189,10 @@ function Home({ language }: HomeProps) {
                 <span>Node.js</span>
               </div>
               <div className={styles.techItemCard}>
+                <SiExpress className={styles.techIcon} style={{ color: '#ffffff' }} />
+                <span>Express.js</span>
+              </div>
+              <div className={styles.techItemCard}>
                 <FaHtml5 className={styles.techIcon} style={{ color: '#e34f26' }} />
                 <span>HTML5</span>
               </div>
@@ -178,9 +200,14 @@ function Home({ language }: HomeProps) {
                 <FaCss3Alt className={styles.techIcon} style={{ color: '#1572b6' }} />
                 <span>CSS Modules</span>
               </div>
+              <div className={styles.techItemCard}>
+                <FaBootstrap className={styles.techIcon} style={{ color: '#7952b3' }} />
+                <span>Bootstrap</span>
+              </div>
             </div>
           </div>
 
+          {/* Section 3: Tools & enviroments */}
           <div className={styles.techCardSection}>
             <h2>{t.toolsTitle}</h2>
             <p className={styles.techCardDesc}>{t.toolsDesc}</p>
@@ -191,11 +218,19 @@ function Home({ language }: HomeProps) {
               </div>
               <div className={styles.techItemCard}>
                 <FaGithub className={styles.techIcon} style={{ color: '#ffffff' }} />
-                <span>GitHub</span>
+                <span>GitHub / Pages</span>
               </div>
               <div className={styles.techItemCard}>
                 <DiVisualstudio className={styles.techIcon} style={{ color: '#007acc' }} />
                 <span>VS Code</span>
+              </div>
+              <div className={styles.techItemCard}>
+                <SiPostman className={styles.techIcon} style={{ color: '#ff6c37' }} />
+                <span>Postman</span>
+              </div>
+              <div className={styles.techItemCard}>
+                <SiVercel className={styles.techIcon} style={{ color: '#ffffff' }} />
+                <span>Vercel</span>
               </div>
               <div className={styles.techItemCard}>
                 <FaTerminal className={styles.techIcon} style={{ color: '#4af626' }} />
