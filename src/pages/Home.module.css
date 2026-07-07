@@ -5,11 +5,13 @@
   max-width: 100vw;
   overflow-x: hidden;
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   --hero-overlay: rgba(0, 0, 0, 0.5);
   transition: background-color 0.3s ease;
+  margin-top: -80px; 
+  padding-top: 80px;
 }
 
 :global([data-theme="light"]) .homeContainer {
