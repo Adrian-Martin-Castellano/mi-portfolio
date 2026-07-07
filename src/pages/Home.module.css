@@ -17,11 +17,11 @@
 }
 
 .heroSection {
-  min-height: 90vh;
+  min-height: 80vh; 
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px 2rem 60px 2rem;
+  padding: 40px 2rem 40px 2rem; 
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
