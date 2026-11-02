@@ -1,0 +1,84 @@
+
+.cta,
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 0.98rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.cta { border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); }
+.ghost { border: 1px solid var(--border); background: transparent; color: var(--text-primary); }
+.cta:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.ghost:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+.cta:focus-visible,
+.ghost:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+.chip {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ---------- Tarjeta de proyecto ---------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: border-color 0.25s ease;
+}
+.card:hover { border-color: var(--accent); }
+
+.visual { position: relative; }
+
+.shot,
+.shotEmpty { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+
+.shotEmpty {
+  display: grid;
+  place-items: center;
+  font-size: 2.6rem;
+  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent-soft), transparent 70%), var(--bg-elevated);
+}
+
+.kind {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+}
+
+.body { display: flex; flex-direction: column; flex: 1; padding: 1.2rem 1.4rem 1.4rem; }
+
+.body h3 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.body p { margin: 0 0 1rem; flex: 1; line-height: 1.6; color: var(--text-secondary); }
+.links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.1rem; }

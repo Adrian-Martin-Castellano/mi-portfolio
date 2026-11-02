@@ -1,0 +1,39 @@
+
+:root,
+[data-theme="dark"] {
+  --bg-primary: #0f0d0a;
+  --bg-surface: #17140f;
+  --bg-elevated: #1f1a12;
+  --text-primary: #f4ecd8;
+  --text-secondary: #b3a98f;
+  --accent: #d4a64a;
+  --accent-strong: #f0cd7e;
+  --accent-soft: rgba(212, 166, 74, 0.13);
+  --on-accent: #17120a;
+  --border: rgba(212, 166, 74, 0.2);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-main: 'Manrope', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+[data-theme="light"] {
+  --bg-primary: #faf6ec;
+  --bg-surface: #fffdf7;
+  --bg-elevated: #f2ebd8;
+  --text-primary: #1f1a10;
+  --text-secondary: #6a5f48;
+  --accent: #8f6410;
+  --accent-strong: #7a540a;
+  --accent-soft: rgba(143, 100, 16, 0.1);
+  --on-accent: #fffdf7;
+  --border: rgba(120, 90, 20, 0.24);
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

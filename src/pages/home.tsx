@@ -1,317 +1,100 @@
 import { Link } from 'react-router-dom';
-import { FaArrowDown, FaCode, FaJs, FaPython, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaTerminal, FaExternalLinkAlt, FaGem, FaBootstrap, FaBrain } from 'react-icons/fa';
-import { SiTypescript, SiPostgresql, SiNodedotjs, SiCplusplus, SiExpress, SiMongodb, SiVercel, SiPostman } from 'react-icons/si';
-import { DiVisualstudio } from 'react-icons/di'; 
-import styles from './Home.module.css';
-import backgroundImage from '../assets/hero-bg.jpg'; 
+import { FaArrowRight, FaGithub } from 'react-icons/fa';
+import ui from '../components/ui.module.css';
+import ProjectCard from '../components/ProjectCard';
+import { GITHUB, PROJECTS } from '../data/portfolio';
+import photo from '../assets/foto.jpeg'; // <-- pon aquí tu foto
+import s from './Home.module.css';
 
 interface HomeProps {
   language: 'es' | 'en';
 }
 
+const text = {
+  es: {
+    hi: 'Hola, soy Adrián.',
+    intro: 'Creo páginas web, aplicaciones y diseños 3D. Estudio informática y me encanta convertir ideas en cosas que se pueden usar.',
+    seeProjects: 'Ver mis proyectos',
+    talk: 'Hablemos',
+    featured: 'Proyectos destacados',
+    all: 'Ver todos los proyectos',
+    ctaTitle: '¿Tienes un proyecto en mente?',
+    ctaDesc: 'Si tienes una idea, una oferta o solo quieres charlar, escríbeme.',
+    ctaBtn: 'Ir a contacto',
+    code: { studies: 'estudia', makes: 'crea', open: 'abierto_a' },
+    codeVals: { studies: 'Informática', makes: ['webs', 'apps', 'diseño 3D'], open: 'proyectos nuevos' },
+  },
+  en: {
+    hi: "Hi, I'm Adrián.",
+    intro: 'I create websites, apps and 3D designs. I study computer science and love turning ideas into things people can use.',
+    seeProjects: 'See my projects',
+    talk: "Let's talk",
+    featured: 'Featured projects',
+    all: 'See all projects',
+    ctaTitle: 'Got a project in mind?',
+    ctaDesc: 'If you have an idea, an offer, or just want to chat, write to me.',
+    ctaBtn: 'Go to contact',
+    code: { studies: 'studies', makes: 'builds', open: 'open_to' },
+    codeVals: { studies: 'Computer Science', makes: ['websites', 'apps', '3D design'], open: 'new projects' },
+  },
+};
+
 function Home({ language }: HomeProps) {
-  const translations = {
-    es: {
-      heroTag: 'SIEMPRE EN CONSTANTE APRENDIZAJE',
-      heroTitle: 'Construyendo el futuro de la web con código limpio y eficiente',
-      heroDesc: 'Soy Adrián Martín Castellano, estudiante universitario y desarrollador web enfocado en crear aplicaciones modernas, optimizadas y escalables. Transformo ideas complejas en interfaces interactivas de alta calidad.',
-      ctaProjects: 'Ver mis proyectos',
-      ctaStack: 'Mi Stack',
-      techMainTitle: 'Mi Stack Tecnológico',
-      languagesTitle: 'Lenguajes de Programación & Base de datos',
-      languagesDesc: 'Los pilares fundamentales con los que estructuro la lógica y el comportamiento de mis aplicaciones.',
-      frameworksTitle: 'Frameworks & Librerías',
-      frameworksDesc: 'Herramientas y entornos modernos que utilizo para acelerar el desarrollo y crear interfaces interactivas.',
-      toolsTitle: 'Herramientas & Entornos',
-      toolsDesc: 'El software, utilidades y plataformas esenciales que optimizan mi flujo de trabajo diario, control de versiones y despliegue.',
-      projectsMainTitle: 'Proyectos Destacados',
-      viewCode: 'Código',
-      liveDemo: 'Demo',
-      project1Title: 'E-Commerce Platform',
-      project1Desc: 'Aplicación web completa con carrito de compras, pasarela de pago integrada y panel de administración interactivo.',
-      project2Title: 'Task Manager Dashboard',
-      project2Desc: 'Gestor de tareas en tiempo real con arrastrar y soltar, analíticas de productividad y sistema de autenticación seguro.',
-      welcome: 'Bienvenido a mi espacio digital',
-      description: 'Soy estudiante universitario apasionado por la tecnología y el desarrollo de aplicaciones web. En este portfolio podrás conocer más detalladamente mi trayectoria académica, las tecnologías con las que trabajo a diario y los proyectos que he desarrollado.',
-      moreAboutMe: '→ Saber más sobre mí',
-      talk: '→ ¿Hablamos?',
-      projectsBtn: 'Proyectos'
-    },
-    en: {
-      heroTag: 'LIFELONG LEARNER',
-      heroTitle: 'Building the future of the web with clean and efficient code',
-      heroDesc: 'I am Adrián Martín Castellano, a university student and web developer focused on building modern, optimized, and scalable applications. I transform complex ideas into high-quality interactive interfaces.',
-      ctaProjects: 'View my projects',
-      ctaStack: 'My Stack',
-      techMainTitle: 'My Tech Stack',
-      languagesTitle: 'Programming Languages & DataBases',
-      languagesDesc: 'The core foundations I use to structure the logic and behavior of my applications.',
-      frameworksTitle: 'Frameworks & Libraries',
-      frameworksDesc: 'Modern tools and environments I leverage to speed up development and build interactive UIs.',
-      toolsTitle: 'Tools & Environments',
-      toolsDesc: 'Essential software, utilities, and platforms that optimize my daily workflow, version control, and deployment.',
-      projectsMainTitle: 'Featured Projects',
-      viewCode: 'Code',
-      liveDemo: 'Demo',
-      project1Title: 'E-Commerce Platform',
-      project1Desc: 'Full web application with a shopping cart, integrated payment gateway, and an interactive admin dashboard.',
-      project2Title: 'Task Manager Dashboard',
-      project2Desc: 'Real-time task manager with drag-and-drop functionality, productivity analytics, and secure authentication.',
-      welcome: 'Welcome to my digital space',
-      description: 'I am a university student passionate about technology and web application development. In this portfolio, you can learn more in detail about my academic background, the technologies I work with daily, and the projects I have built.',
-      moreAboutMe: '→ More about me',
-      talk: '→ Let\'s talk',
-      projectsBtn: 'Projects'
-    }
-  };
-
-  const t = translations[language];
-
-  const scrollToTech = () => {
-    const techSection = document.getElementById('tech-section');
-    techSection?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const t = text[language];
+  const featured = PROJECTS.filter((p) => p.featured).slice(0, 3);
 
   return (
-    <div 
-      className={styles.homeContainer}
-      style={{ backgroundImage: `linear-gradient(var(--hero-overlay), var(--hero-overlay)), url(${backgroundImage})` }}
-    >
-
-      <section className={styles.heroSection}>
-        <div className={styles.heroGridContainer}>
-
-          <div className={styles.heroTexts}>
-            <span className={styles.heroBadge}>{t.heroTag}</span>
-            <h1>{t.heroTitle}</h1>
-            <p className={styles.mainDesc}>{t.heroDesc}</p>
-            
-            <div className={styles.heroActions}>
-              <Link to="/proyectos" className={styles.ctaPrimary}>
-                {t.ctaProjects}
-              </Link>
-              <button onClick={scrollToTech} className={styles.ctaSecondary}>
-                {t.ctaStack} <FaArrowDown style={{ marginLeft: '8px', fontSize: '0.85rem' }} />
-              </button>
-            </div>
+    <main className={s.page}>
+      {/* INICIO */}
+      <section className={s.hero}>
+        <div className={s.heroText}>
+          <h1>{t.hi}</h1>
+          <p>{t.intro}</p>
+          <div className={s.actions}>
+            <Link to="/proyectos" className={ui.cta}>{t.seeProjects} <FaArrowRight /></Link>
+            <Link to="/contacto" className={ui.ghost}>{t.talk}</Link>
+            <a href={GITHUB} target="_blank" rel="noreferrer" className={ui.ghost} aria-label="GitHub"><FaGithub /> GitHub</a>
           </div>
-
-          <div className={styles.heroDisplay}>
-            <div className={styles.codeMockup}>
-              <div className={styles.codeHeader}>
-                <span className={styles.dot} style={{ backgroundColor: '#ff5f56' }}></span>
-                <span className={styles.dot} style={{ backgroundColor: '#ffbd2e' }}></span>
-                <span className={styles.dot} style={{ backgroundColor: '#27c93f' }}></span>
-                <span className={styles.codeTab}>Adrian.ts</span>
-              </div>
-              <pre className={styles.codeContent}>
-                <code>
-                  <span className={styles.keyword}>const</span> developer = &#123;<br />
-                  &nbsp;&nbsp;name: <span className={styles.string}>'Adrián Martín Castellano'</span>,<br />
-                  &nbsp;&nbsp;role: <span className={styles.string}>'Web Developer'</span>,<br />
-                  &nbsp;&nbsp;status: <span className={styles.string}>'University Student'</span>,<br />
-                  &nbsp;&nbsp;passions: [<span className={styles.string}>'Technology'</span>, <span className={styles.string}>'Clean Code'</span>],<br />
-                  &nbsp;&nbsp;ready: <span className={styles.keyword}>true</span><br />
-                  &#125;;
-                </code>
-              </pre>
-            </div>
-          </div>
-
         </div>
-      </section>
 
-      <div className={styles.sectionDivider}>
-        <div className={styles.dividerLine}></div>
-        <div className={styles.dividerBadge}>⚡ STACK</div>
-        <div className={styles.dividerLine}></div>
-      </div>
-
-      <section id="tech-section" className={styles.techSection}>
-        <h2 className={styles.mainTechTitle}>{t.techMainTitle}</h2>
-
-        <div className={styles.techCardsContainer}>
-          {/* Section 1: Languajes & databases */}
-          <div className={styles.techCardSection}>
-            <h2>{t.languagesTitle}</h2>
-            <p className={styles.techCardDesc}>{t.languagesDesc}</p>
-            <div className={styles.techItemGrid}>
-              <div className={styles.techItemCard}>
-                <FaJs className={styles.techIcon} style={{ color: '#f7df1e' }} />
-                <span>JavaScript</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <SiTypescript className={styles.techIcon} style={{ color: '#3178c6' }} />
-                <span>TypeScript</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <FaPython className={styles.techIcon} style={{ color: '#3776ab' }} />
-                <span>Python</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <SiCplusplus className={styles.techIcon} style={{ color: '#00599c' }} />
-                <span>C++</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <FaGem className={styles.techIcon} style={{ color: '#cc342d' }} />
-                <span>Ruby</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <FaTerminal className={styles.techIcon} style={{ color: '#6e4a7e' }} />
-                <span>Assembly</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <SiPostgresql className={styles.techIcon} style={{ color: '#4169e1' }} />
-                <span>PostgreSQL</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <SiMongodb className={styles.techIcon} style={{ color: '#47a248' }} />
-                <span>MongoDB / Atlas</span>
-              </div>
-              <div className={styles.techItemCard}>
-              <FaBrain className={styles.techIcon} style={{ color: '#e32929' }} />
-                <span>Prolog</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 2: Frameworks & libraries */}
-          <div className={styles.techCardSection}>
-            <h2>{t.frameworksTitle}</h2>
-            <p className={styles.techCardDesc}>{t.frameworksDesc}</p>
-            <div className={styles.techItemGrid}>
-              <div className={styles.techItemCard}>
-                <FaReact className={styles.techIcon} style={{ color: '#61dafb' }} />
-                <span>React</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <SiNodedotjs className={styles.techIcon} style={{ color: '#339933' }} />
-                <span>Node.js</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <SiExpress className={styles.techIcon} style={{ color: '#ffffff' }} />
-                <span>Express.js</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <FaHtml5 className={styles.techIcon} style={{ color: '#e34f26' }} />
-                <span>HTML5</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <FaCss3Alt className={styles.techIcon} style={{ color: '#1572b6' }} />
-                <span>CSS Modules</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <FaBootstrap className={styles.techIcon} style={{ color: '#7952b3' }} />
-                <span>Bootstrap</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 3: Tools & enviroments */}
-          <div className={styles.techCardSection}>
-            <h2>{t.toolsTitle}</h2>
-            <p className={styles.techCardDesc}>{t.toolsDesc}</p>
-            <div className={styles.techItemGrid}>
-              <div className={styles.techItemCard}>
-                <FaGitAlt className={styles.techIcon} style={{ color: '#f05032' }} />
-                <span>Git</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <FaGithub className={styles.techIcon} style={{ color: '#ffffff' }} />
-                <span>GitHub / Pages</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <DiVisualstudio className={styles.techIcon} style={{ color: '#007acc' }} />
-                <span>VS Code</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <SiPostman className={styles.techIcon} style={{ color: '#ff6c37' }} />
-                <span>Postman</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <SiVercel className={styles.techIcon} style={{ color: '#ffffff' }} />
-                <span>Vercel</span>
-              </div>
-              <div className={styles.techItemCard}>
-                <FaTerminal className={styles.techIcon} style={{ color: '#4af626' }} />
-                <span>Terminal</span>
-              </div>
-            </div>
+        <div className={s.visual}>
+          <img src={photo} alt="Adrián Martín Castellano" className={s.photo} />
+          <div className={s.code} aria-hidden="true">
+            <div className={s.codeBar}><i /><i /><i /><span>adrian.ts</span></div>
+            <pre>
+              <span className={s.kw}>const</span> adrian <span className={s.pun}>= {'{'}</span>{'\n'}
+              {'  '}<span className={s.key}>{t.code.studies}</span><span className={s.pun}>:</span> <span className={s.str}>'{t.codeVals.studies}'</span><span className={s.pun}>,</span>{'\n'}
+              {'  '}<span className={s.key}>{t.code.makes}</span><span className={s.pun}>: [</span>{t.codeVals.makes.map((m, i) => (
+                <span key={m}><span className={s.str}>'{m}'</span>{i < t.codeVals.makes.length - 1 && <span className={s.pun}>, </span>}</span>
+              ))}<span className={s.pun}>],</span>{'\n'}
+              {'  '}<span className={s.key}>{t.code.open}</span><span className={s.pun}>:</span> <span className={s.str}>'{t.codeVals.open}'</span><span className={s.pun}>,</span>{'\n'}
+              <span className={s.pun}>{'}'};</span><span className={s.caret} />
+            </pre>
           </div>
         </div>
       </section>
 
-      <div className={styles.sectionDivider}>
-        <div className={styles.dividerLine}></div>
-        <div className={styles.dividerBadge}>📁 PROJECTS</div>
-        <div className={styles.dividerLine}></div>
-      </div>
-
-      <section className={styles.projectsSection}>
-        <h2 className={styles.mainProjectsTitle}>{t.projectsMainTitle}</h2>
-        <div className={styles.projectsGridContainer}>
-          
-          <div className={styles.projectCard}>
-            <h3>{t.project1Title}</h3>
-            <p>{t.project1Desc}</p>
-            <div className={styles.projectTags}>
-              <span>React</span>
-              <span>Node.js</span>
-              <span>PostgreSQL</span>
-            </div>
-            <div className={styles.projectLinks}>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className={styles.projLinkSecondary}>
-                <FaGithub /> {t.viewCode}
-              </a>
-              <a href="https://demo.com" target="_blank" rel="noreferrer" className={styles.projLinkPrimary}>
-                <FaExternalLinkAlt /> {t.liveDemo}
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.projectCard}>
-            <h3>{t.project2Title}</h3>
-            <p>{t.project2Desc}</p>
-            <div className={styles.projectTags}>
-              <span>TypeScript</span>
-              <span>React</span>
-              <span>CSS Modules</span>
-            </div>
-            <div className={styles.projectLinks}>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className={styles.projLinkSecondary}>
-                <FaGithub /> {t.viewCode}
-              </a>
-              <a href="https://demo.com" target="_blank" rel="noreferrer" className={styles.projLinkPrimary}>
-                <FaExternalLinkAlt /> {t.liveDemo}
-              </a>
-            </div>
-          </div>
-
+      <section className={s.block}>
+        <div className={s.blockHead}>
+          <h2>{t.featured}</h2>
+          <Link to="/proyectos" className={s.more}>{t.all} <FaArrowRight /></Link>
+        </div>
+        <div className={s.grid}>
+          {featured.map((p) => <ProjectCard key={p.id} project={p} language={language} />)}
         </div>
       </section>
 
-      <div className={styles.sectionDivider}>
-        <div className={styles.dividerLine}></div>
-        <div className={styles.dividerBadge}>✨ BIO</div>
-        <div className={styles.dividerLine}></div>
-      </div>
-
-      <section className={styles.summarySection}>
-        <div className={styles.summaryCard}>
-          <h2>{t.welcome}</h2>
-          <p>{t.description}</p>
-          <div className={styles.linksGrid}>
-            <Link to="/sobre-mi" className={styles.secondaryLink}>{t.moreAboutMe}</Link>
-            <Link to="/contacto" className={styles.secondaryLink}>{t.talk}</Link>
+      {/* LLAMADA A CONTACTO */}
+      <section className={s.block}>
+        <div className={s.band}>
+          <div>
+            <h2>{t.ctaTitle}</h2>
+            <p>{t.ctaDesc}</p>
           </div>
+          <Link to="/contacto" className={ui.cta}>{t.ctaBtn} <FaArrowRight /></Link>
         </div>
       </section>
-
-      <Link to="/proyectos" className={styles.floatingButton} aria-label={t.projectsBtn}>
-        <FaCode className={styles.fabIcon} />
-        <span className={styles.fabText}>{t.projectsBtn}</span>
-      </Link>
-    </div>
+    </main>
   );
 }
 

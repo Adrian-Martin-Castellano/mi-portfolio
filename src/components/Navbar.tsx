@@ -10,17 +10,16 @@ interface NavbarProps {
   setIsDarkMode: (dark: boolean) => void;
 }
 
+const translations = {
+  es: { inicio: 'Inicio', proyectos: 'Proyectos', habilidades: 'Habilidades', contacto: 'Contacto' },
+  en: { inicio: 'Home', proyectos: 'Projects', habilidades: 'Skills', contacto: 'Contact' },
+};
+
 function Navbar({ language, setLanguage, isDarkMode, setIsDarkMode }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleTheme = () => setIsDarkMode(!isDarkMode);
-  const toggleLanguage = () => setLanguage(language === 'es' ? 'en' : 'es');
-  const translations = {
-    es: { inicio: 'Inicio', sobreMi: 'Sobre Mí', proyectos: 'Proyectos', contacto: 'Contacto' },
-    en: { inicio: 'Home', sobreMi: 'About Me', proyectos: 'Projects', contacto: 'Contact' }
-  };
-
   const t = translations[language];
+  const close = () => setIsOpen(false);
+
   const linkStyle = ({ isActive }: { isActive: boolean }) => ({
     color: isActive ? 'var(--accent)' : 'var(--text-secondary)',
     fontWeight: isActive ? '600' : '500',
@@ -29,28 +28,26 @@ function Navbar({ language, setLanguage, isDarkMode, setIsDarkMode }: NavbarProp
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-        <Link to="/" onClick={() => setIsOpen(false)}>
+        <Link to="/" onClick={close}>
           Adrián<span>.dev</span>
         </Link>
       </div>
-      
+
       <div className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
-        <NavLink to="/" style={linkStyle} onClick={() => setIsOpen(false)}>{t.inicio}</NavLink>
-        <NavLink to="/sobre-mi" style={linkStyle} onClick={() => setIsOpen(false)}>{t.sobreMi}</NavLink>
-        <NavLink to="/proyectos" style={linkStyle} onClick={() => setIsOpen(false)}>{t.proyectos}</NavLink>
-        <NavLink to="/contacto" style={linkStyle} onClick={() => setIsOpen(false)}>{t.contacto}</NavLink>
+        <NavLink to="/" end style={linkStyle} onClick={close}>{t.inicio}</NavLink>
+        <NavLink to="/proyectos" style={linkStyle} onClick={close}>{t.proyectos}</NavLink>
+        <NavLink to="/habilidades" style={linkStyle} onClick={close}>{t.habilidades}</NavLink>
+        <NavLink to="/contacto" style={linkStyle} onClick={close}>{t.contacto}</NavLink>
       </div>
 
       <div className={styles.navActions}>
-        <button onClick={toggleLanguage} className={styles.actionBtn} aria-label="Cambiar idioma">
+        <button onClick={() => setLanguage(language === 'es' ? 'en' : 'es')} className={styles.actionBtn} aria-label="Cambiar idioma">
           {language === 'es' ? 'EN' : 'ES'}
         </button>
-        
-        <button onClick={toggleTheme} className={styles.actionBtn} aria-label="Cambiar tema">
+        <button onClick={() => setIsDarkMode(!isDarkMode)} className={styles.actionBtn} aria-label="Cambiar tema">
           {isDarkMode ? <FaSun /> : <FaMoon />}
         </button>
-
-        <button className={styles.menuIcon} onClick={toggleMenu} aria-label="Toggle menu">
+        <button className={styles.menuIcon} onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
